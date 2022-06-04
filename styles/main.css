@@ -11,7 +11,7 @@ body {
 
 table,
 th, 
-td {
+td, {
     border-collapse: collapse;
     border: 2px solid black;
     letter-spacing: 1px;

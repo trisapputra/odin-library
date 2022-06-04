@@ -1,5 +1,6 @@
 body {
     display: flex;
+    font-family: 'Courier New', Courier, monospace;
 }
 
 .table-container {
@@ -10,10 +11,16 @@ body {
 }
 
 table,
-th, 
-td, {
+tr,
+th,
+td {
     border-collapse: collapse;
     border: 2px solid black;
     letter-spacing: 1px;
+    padding: 6px 16px;
     
+}
+
+td {
+    text-align: center;
 }

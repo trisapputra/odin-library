@@ -1,6 +1,6 @@
 let myLibrary = [
-    {title: 'title1', author: 'author1111111',pages: 123, status: 'read'},
-    {title: 'title2', author: 'author2',pages: 123, status: 'not read'}
+    {title: 'The Hobbit', author: 'J.R.R Tolkien',pages: 295, status: 'not read yet'},
+    {title: 'The Maze Runner', author: 'James Dashner',pages: 375, status: 'not read yet'}
 ];
 
 function Book() {

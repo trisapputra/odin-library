@@ -3,8 +3,12 @@ let myLibrary = [
     {title: 'The Maze Runner', author: 'James Dashner',pages: 375, status: 'not read yet'}
 ];
 
-function Book() {
+function Book(title, author, pages, note) {
   // the constructor...
+  this.title = title;
+  this.author = author;
+  this.pages = pages;
+  this.note = note;
 }
 
 function addBookToLibrary(userBook) {
@@ -28,3 +32,17 @@ myLibrary.forEach((book) => {
     dataStat.textContent = book.status
     tableRow.appendChild(dataStat)
 })
+
+
+const addNewBookBtn = document.getElementById('book-btn');
+addNewBookBtn.addEventListener('click', function () {
+    const title = `${document.getElementById('title').value}`
+    const author = `${document.getElementById('author').value}`
+    const pages = `${document.getElementById('pages').value}`
+    
+    let newBook = new Book(title, author, pages, 'read')
+    addBookToLibrary(newBook)
+    console.log(newBook)
+})
+
+

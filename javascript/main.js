@@ -3,19 +3,28 @@ let myLibrary = [
     {title: 'The Maze Runner', author: 'James Dashner',pages: 375, status: 'not read yet'}
 ];
 
-function Book(title, author, pages, note) {
+function Book(title, author, pages, status) {
   // the constructor...
   this.title = title;
   this.author = author;
   this.pages = pages;
-  this.note = note;
+  this.status = status;
 }
 
 function addBookToLibrary(userBook) {
   myLibrary.push(userBook);
 }
 
-myLibrary.forEach((book) => {
+
+function delTableRow () {
+  const tableBody = document.getElementById('table-body')
+  while (tableBody.hasChildNodes()) {
+    tableBody.removeChild(tableBody.firstChild);
+  }
+}
+
+function tableGenerator () {
+  myLibrary.forEach((book) => {
     const tableBody = document.getElementById('table-body')
     const tableRow = document.createElement('tr')
     tableBody.appendChild(tableRow)
@@ -31,18 +40,45 @@ myLibrary.forEach((book) => {
     const dataStat = document.createElement('td')
     dataStat.textContent = book.status
     tableRow.appendChild(dataStat)
-})
+    const delBtn = document.createElement('button')
+    delBtn.setAttribute('class', 'del-btn')
+    tableRow.appendChild(delBtn)
+    const trashBtn = document.createElement('span')
+    trashBtn.setAttribute('class', "material-symbols-outlined")
+    trashBtn.textContent = 'delete'
+    delBtn.appendChild(trashBtn)
+    delBtn.addEventListener('click', () => {
+        const bookIndex = myLibrary.findIndex( item => item.title == book.title)
+        myLibrary.splice(`${bookIndex}`, 1)
+        delTableRow();
+        tableGenerator();
+    })
 
+    const totalBooks = document.getElementById('total-books')
+    totalBooks.textContent = 'Total Books' + ' ' + '=' + ' ' + myLibrary.length
+})
+}
+
+// generate default tebla from array
+tableGenerator();
 
 const addNewBookBtn = document.getElementById('book-btn');
-addNewBookBtn.addEventListener('click', function () {
+addNewBookBtn.addEventListener('click', (e) => {
+    e.preventDefault();
     const title = `${document.getElementById('title').value}`
     const author = `${document.getElementById('author').value}`
     const pages = `${document.getElementById('pages').value}`
+    const readStats = `${document.querySelector('input[name="read"]:checked').value}`;
     
-    let newBook = new Book(title, author, pages, 'read')
+    let newBook = new Book(title, author, pages, readStats)
     addBookToLibrary(newBook)
-    console.log(newBook)
+    delTableRow();
+    tableGenerator();
+    
+    const form = document.querySelector('form')
+    form.reset();
+    
+    
 })
 
 

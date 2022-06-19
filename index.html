@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="./styles/main.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
     <script src="./javascript/main.js" defer></script>
 </head>
 <body>
@@ -20,7 +21,7 @@
             <label for="read" class="input-radio">read</label><br>
             <input type="radio" id="not read" name="read" value="not read">
             <label for="not read" class="input-radio">not read</label><br><br>
-            <button id="book-btn" type="button">Add a new book</button><br><br>
+            <button id="book-btn">Add a new book</button><br><br>
         
             <div id="message">
                 <pre></pre>
@@ -44,8 +45,7 @@
             </tbody>
             <tfoot>
                 <tr>
-                    <td>Total books:</td>
-                    <td>0</td>
+                    <td id="total-books" colspan="5">0</td>
                 </tr>
             </tfoot>
 

@@ -21,6 +21,15 @@ td {
     
 }
 
+/* #total-books {
+    column-span: all;
+} */
+
+.del-btn {
+    margin: 12px 28px;
+
+}
+
 td {
     text-align: center;
 }
